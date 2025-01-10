@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: true
+  vars:
+    # Exemplos de variáveis personalizáveis
+    #client_sw_dir: "./files/QAS-4.2.4.25529/client"
+    #client_sw_tmp_dir: /tmp/1id
+    #client_preflight_facts_generate: true
+    #client_preflight_reports_generate: true
+  roles:
+    - name: oneidentity.authentication_services.client_preflight
