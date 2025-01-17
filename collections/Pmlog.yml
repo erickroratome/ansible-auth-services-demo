@@ -5,7 +5,7 @@
   become: true
 
   vars:
-    log_file: "/var/log/pmlog_results.txt"  # Defina o caminho do arquivo de log onde os resultados serão armazenados
+    log_file: "/tmp/resultlogs"  # Defina o caminho do arquivo de log onde os resultados serão armazenados
     pmlog_command: "/opt/quest/sbin/pmlog"  # Caminho para o comando pmlog (ajuste conforme necessário)
 
   tasks:
