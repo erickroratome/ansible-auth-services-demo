@@ -1,6 +1,6 @@
 ---
 - name: Execute pmlog and store results for a specific user
-  hosts: all
+  hosts: serverpmu
   gather_facts: true
   become: true
   vars:
