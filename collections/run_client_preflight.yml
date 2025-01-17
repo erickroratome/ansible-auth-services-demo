@@ -1,17 +1,30 @@
 ---
-- hosts: all 
-  gather_facts: true
-  vars: 
+
+- hosts: all
+  gather_facts: false
+
+  # The variables you would most likely want/need to override have been included
+  vars:
+
+    # Join
+    join_server: 192.168.92.162
+
+    # Preflight
+    preflight_mode: sudo
+    preflight_verbose: false
+    preflight_extra_args: ''
+
     # Directories
-    # client_sw_dir: "./files/QAS-4.2.4.25529/client"
+    software_dir: "/root/7.3.0.2"
+    software_tmp_dir: /root/client
 
     # Facts
-    # client_preflight_facts_generate: true
-    # client_preflight_facts_verbose: false
+    preflight_facts_generate: true
+    preflight_facts_verbose: false
 
     # Reports
-    # client_preflight_reports_generate: true
-    # client_preflight_reports_backup: false
+    preflight_reports_generate: true
+    preflight_reports_backup: false
 
-  roles: 
-    - name: oneidentity.authentication_services.client_preflight
+  roles:
+    - name: oneidentity.privilege_manager.preflight
