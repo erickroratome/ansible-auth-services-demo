@@ -15,7 +15,7 @@
     preflight_extra_args: ''
 
     # Directories
-    software_dir: "/root/7.3.0.2"
+    software_dir: "/var/lib/awx/projects/7.3.0.2"
     software_tmp_dir: /root/client
 
     # Facts
