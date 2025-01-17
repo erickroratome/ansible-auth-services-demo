@@ -1,6 +1,6 @@
 ---
 - name: Execute pmlog and store results
-  hosts: all
+  hosts: serverpmu
   gather_facts: true
   become: true
 
