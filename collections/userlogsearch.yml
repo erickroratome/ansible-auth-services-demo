@@ -1,19 +1,19 @@
 ---
 - name: Execute pmlog and store results for a specific user
-  hosts: serverpmu
+  hosts: all
   gather_facts: true
   become: true
   vars:
     user_name: "{{ user_name | default('default_user') }}"  # Nome do usuário passado no AWX
     log_file: "/var/log/pmlog_results_{{ user_name }}.txt"  # Caminho do arquivo de log específico para o usuário
-    pmlog_command: "/opt/quest/sbin/pmlog"
+    pmlog_command: "/opt/quest/sbin/pmlog"  # Caminho para o comando pmlog
 
   tasks:
     - name: Execute pmlog command and capture output
       shell: |
         {{ pmlog_command }} --user {{ user_name }}
       register: pmlog_output
-      ignore_errors: yes
+      ignore_errors: yes  # Ignora erros para garantir que a execução do playbook continue
 
     - name: Store the pmlog results in a file
       copy:
