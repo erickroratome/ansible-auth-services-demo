@@ -1,3 +1,3 @@
 ---
 collections:
-  - name: oneidentity.authentication_services
+- name: https://github.com/OneIdentity/ansible-privilege-manager/releases/download/v0.1.0/oneidentity-privilege_manager-0.1.0.tar.gz
