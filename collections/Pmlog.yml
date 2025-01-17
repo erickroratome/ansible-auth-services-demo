@@ -1,0 +1,31 @@
+---
+- name: Execute pmlog and store results
+  hosts: all
+  gather_facts: true
+  become: true
+
+  vars:
+    log_file: "/var/log/pmlog_results.txt"  # Defina o caminho do arquivo de log onde os resultados serão armazenados
+    pmlog_command: "/opt/quest/sbin/pmlog"  # Caminho para o comando pmlog (ajuste conforme necessário)
+
+  tasks:
+    - name: Execute pmlog command and capture output
+      shell: "{{ pmlog_command }}"
+      register: pmlog_output
+      ignore_errors: yes  # Se o comando falhar, a execução do playbook continua
+
+    - name: Store the pmlog results in a file
+      copy:
+        content: "{{ pmlog_output.stdout }}"
+        dest: "{{ log_file }}"
+        mode: '0644'
+
+    - name: Verify log file creation
+      stat:
+        path: "{{ log_file }}"
+      register: log_file_stat
+
+    - name: Display log file creation status
+      debug:
+        msg: "Log file created successfully at {{ log_file }}."
+      when: log_file_stat.stat.exists
