@@ -1,6 +1,6 @@
 ---
 
-- hosts: 192.168.92.162
+- hosts: clientpmu
   gather_facts: false
 
   # The variables you would most likely want/need to override have been included
